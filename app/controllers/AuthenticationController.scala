@@ -1,15 +1,19 @@
 package controllers
 
+import connectors.CryptoPhotoConnector
 import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 import views._
 
-object AuthenticationController extends AuthenticationController
+object AuthenticationController extends AuthenticationController {
+  override val cryptoPhotoConnector = CryptoPhotoConnector
+}
 
 class AuthenticationController extends Controller {
 
+  val cryptoPhotoConnector : CryptoPhotoConnector
   val loginForm = Form(
     tuple(
       "email" -> text,
@@ -39,7 +43,11 @@ class AuthenticationController extends Controller {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.login(formWithErrors)),
-      user => Ok(views.html.restricted())
+      user => {
+        val cryptoSession = cryptoPhotoConnector.session(user._1)
+
+        Ok(views.html.restricted(cryptoSession, user._1))
+      }
     )
   }
 

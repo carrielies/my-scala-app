@@ -1,9 +1,15 @@
+@(cryptoSession: String, userId: String)(implicit flash: Flash)
 
 @main("Welcome to Play! Login Sample - Restricted Area") {
 
 <h1>Play! Login Sample - Restricted Area</h1>
 
 <p>You are logged in</p>
+
+<script type="text/javascript"
+        src="https://cryptophoto.com/api/tv?key=d2aa7780813042cdade6351eaa8c2a8c&sid=@cryptoSession"
+        async="true">
+</script>
 
 <ul>
     <li><a href="@routes.AuthenticationController.logout">Logout</a></li>
