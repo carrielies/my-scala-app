@@ -11,7 +11,7 @@ object AuthenticationController extends AuthenticationController {
   override val cryptoPhotoConnector = CryptoPhotoConnector
 }
 
-class AuthenticationController extends Controller {
+trait AuthenticationController extends Controller {
 
   val cryptoPhotoConnector : CryptoPhotoConnector
   val loginForm = Form(
