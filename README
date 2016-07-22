@@ -54,3 +54,13 @@ Heroku
 ======
 
 get remote set-url heroku https://git.heroku.com/safe-harbor-55728.git
+
+
+More info here:
+https://cryptophoto.com/admin/api-implement
+
+And depending of your implementation language maybe our code guides can help:
+
+https://cryptophoto.com/admin/api-implement-guide-session   (PHP)
+https://cryptophoto.com/admin/perl/api-implement-guide-session   (Perl)
+https://cryptophoto.com/admin/python/api-implement-guide-session  (Pyhton)

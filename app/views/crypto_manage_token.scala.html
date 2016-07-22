@@ -1,0 +1,26 @@
+@(cryptoSession: Option[String], userId: String, message: Option[String])(implicit flash: Flash)
+
+@main("Welcome to Play! Login Sample - Restricted Area") {
+
+<h1>Play! Login Sample - Restricted Area</h1>
+
+<p>Manage your token</p>
+
+@message.map { msg =>
+<div id='message'>@msg</div>
+}
+
+
+@cryptoSession.map { sid =>
+    <div id='cp_widget'>Loading...</div>
+    <script type="text/javascript"
+            src="https://cryptophoto.com/api/token?sd=@sid">
+
+    </script>
+}
+
+<ul>
+    <li><a href="@routes.AuthenticationController.logout">Logout</a></li>
+</ul>
+
+}

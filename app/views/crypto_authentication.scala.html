@@ -1,0 +1,28 @@
+@(email: String, sessionId: String)(implicit flash: Flash)
+
+@main("Welcome to Play! Login Sample - Restricted Area") {
+
+<h1>Play! Login Sample - Restricted Area</h1>
+
+<p>Crypto Authentication</p>
+
+@helper.form(routes.AuthenticationController.authenticate_crypto) {
+<p>
+    <input type="hidden" name="email" value="@email">
+    <input type="hidden" name="cryptophoto">
+    <div id="cp_widget" style="margin: 10px auto;width:300px">Loading...</div>
+    <input type="submit" value="Continue">
+    <script type="text/javascript"src="https://cryptophoto.com/api/challenge?sd=@sessionId"></script>
+</p>
+<p>
+    <button type="submit" id="loginbutton">Login</button>
+</p>
+
+}
+
+
+<ul>
+    <li><a href="@routes.AuthenticationController.logout">Logout</a></li>
+</ul>
+
+}
