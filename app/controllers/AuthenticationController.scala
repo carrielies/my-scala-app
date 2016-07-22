@@ -10,7 +10,7 @@ import views._
 
 object AuthenticationController extends AuthenticationController
 
-class AuthenticationController extends Controller {
+trait AuthenticationController extends Controller {
 
   val cryptoPhotoConnector : CryptoPhotoConnector  = CryptoPhotoConnector
   val loginForm = Form(
