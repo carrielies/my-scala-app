@@ -1,9 +1,14 @@
+@(userId: String)
 
 @main("Welcome to Play! Login Sample - Restricted Area") {
 
 <h1>Play! Login Sample - Restricted Area</h1>
 
-<p>Welcome</p>
+<p>Welcome @userId</p>
+
+<ul>
+    <li><a href="@routes.AuthenticationController.manage_crypto(userId)">Manage Token</a></li>
+</ul>
 
 <ul>
     <li><a href="@routes.AuthenticationController.logout">Logout</a></li>

@@ -63,6 +63,12 @@ class AuthenticationController extends Controller {
     )
   }
 
+
+  def manage_crypto(userId: String) = Action { implicit request =>
+      val cryptoSession = cryptoPhotoConnector.session(userId)
+      Ok(views.html.crypto_manage_token(cryptoSession._1, userId, cryptoSession._3))
+  }
+
   /**
     * Handle crypto form submission.
     */
@@ -80,7 +86,7 @@ class AuthenticationController extends Controller {
               val cryptoSession = cryptoPhotoConnector.session(crypto.email)
               BadRequest(views.html.crypto_authentication(crypto.email, cryptoSession._1.getOrElse("")))
             }
-            case None => Ok(views.html.restricted())
+            case None => Ok(views.html.restricted(crypto.email))
           }
 
       }

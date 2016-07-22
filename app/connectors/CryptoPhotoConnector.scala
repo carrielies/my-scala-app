@@ -14,8 +14,6 @@ trait CryptoPhotoConnector {
     // Establish a CryptoPhoto session:
     val cryptoPhotoSession: CryptoPhotoUtils.CryptoPhotoResponse = cryptoPhoto.getSession(userId, ip)
 
-    println(s"CryptoPhoto session is_valid => ${cryptoPhotoSession.is("valid")}, id => ${cryptoPhotoSession.get("id")}, has_token => ${cryptoPhotoSession.get("token")}")
-
     if (!cryptoPhotoSession.is("valid")) {
       println(s"CryptoPhoto session not established!%nERROR: ${cryptoPhotoSession.get("error")}, ${cryptoPhotoSession.get("signature")}")
       (None, false, Some(cryptoPhotoSession.get("error")))
